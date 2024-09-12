@@ -1,0 +1,60 @@
+package org.kis;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+public class Mini_Project {
+public static void main(String[] args) {
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\KISHORE\\eclipse-workspace\\"
+			+ "Selenium_Demo\\Driver2\\chromedriver.exe");
+	WebDriver driver=new ChromeDriver();
+	driver.get("https://adactinhotelapp.com/");
+	driver.manage().window().maximize();
+    driver.findElement(By.name("username")).sendKeys("Kishore10092001");
+    driver.findElement(By.name("password")).sendKeys("Kishore@2001");
+    driver.findElement(By.name("login")).click();
+    WebElement location = driver.findElement(By.name("location"));
+    Select s=new Select(location);
+    s.selectByIndex(2);
+    WebElement hotels = driver.findElement(By.name("hotels"));
+    Select a=new Select(hotels);
+    a.selectByValue("Hotel Sunshine");
+    WebElement room = driver.findElement(By.name("room_type"));
+    Select b=new Select(room);
+    b.selectByVisibleText("Super Deluxe");
+    WebElement no = driver.findElement(By.name("room_nos"));
+    Select c=new Select(no);
+    c.selectByIndex(2);
+    driver.findElement(By.name("datepick_in")).clear();
+    driver.findElement(By.name("datepick_in")).sendKeys("29/08/2022");
+    driver.findElement(By.name("datepick_out")).clear();
+    driver.findElement(By.name("datepick_out")).sendKeys("31/08/2022");
+    WebElement adult = driver.findElement(By.name("adult_room"));
+    Select d=new Select(adult);
+    d.selectByValue("2");
+    WebElement childroom = driver.findElement(By.id("child_room"));
+    Select e=new Select(childroom);
+    e.selectByVisibleText("1 - One");
+    driver.findElement(By.id("Submit")).click();
+    driver.navigate().forward();
+    driver.findElement(By.name("radiobutton_0")).click();
+    driver.findElement(By.name("continue")).click();
+    driver.findElement(By.name("first_name")).sendKeys("kishore");
+    driver.findElement(By.name("last_name")).sendKeys("J");
+    driver.findElement(By.name("address")).sendKeys("inungur(po),kulithalai(tk),karur(DT)");
+    driver.findElement(By.name("cc_num")).sendKeys("1234567812345678");
+    WebElement cctype = driver.findElement(By.name("cc_type"));
+    Select f=new Select(cctype);
+    f.selectByIndex(1);
+    WebElement exp = driver.findElement(By.name("cc_exp_month"));
+    Select g=new Select(exp);
+    g.selectByValue("9");
+    WebElement expyear = driver.findElement(By.name("cc_exp_year"));
+    Select h=new Select(expyear);
+    h.selectByVisibleText("2022");
+    driver.findElement(By.name("cc_cvv")).sendKeys("914");
+    driver.findElement(By.id("book_now")).click();
+    driver.findElement(By.id("search_hotel")).click();
+}
+}
